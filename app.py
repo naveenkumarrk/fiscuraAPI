@@ -568,3 +568,12 @@ async def predict_loan_status(application: LoanApproval):
         return {'Loan Status': "Approved"}
     else:
         return {'Loan Status': "Not Approved"}
+
+
+@app.get("/install-ghostscript")
+def install_ghostscript():
+    try:
+        os.system("apt-get update && apt-get install -y ghostscript")
+        return {"message": "✅ Ghostscript installed successfully!"}
+    except Exception as e:
+        return {"error": f"❌ Failed to install Ghostscript: {str(e)}"}
